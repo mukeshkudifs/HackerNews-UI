@@ -1,0 +1,16 @@
+<div class="search-container">
+  <input type="text" #searchInput placeholder="Search news..." (keyup)="searchNews($event)" />
+  <button (click)="resetSearch(searchInput)">Reset</button>
+</div>
+
+<div *ngIf="isLoading">Loading...</div>
+
+<div *ngIf="!isLoading && totalStories === 0">
+  <p>No news articles found.</p>
+</div>
+
+<div *ngFor="let news of filteredNewsList | paginate: { itemsPerPage: pageSize, currentPage: pageNumber,totalItems : totalStories }" >
+    <a href="{{news.url}}" target="_blank">{{news.title}}</a>
+    <hr>
+</div>
+  <pagination-controls *ngIf="totalStories>0" (pageChange)="pageChanged($event)" class="float-right"  ></pagination-controls>
