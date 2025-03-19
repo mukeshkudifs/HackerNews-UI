@@ -28,6 +28,7 @@ export class NewsComponent implements OnInit {
   pageNumber:number=1
   totalStories:number=200;
   filteredNewsList: News[] = [];
+  selectedValue: number = 0;
 
   constructor(private newsService: NewsService) {
     
@@ -35,6 +36,14 @@ export class NewsComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchNews(this.pageNumber,this.pageSize);
+  }
+
+  onDropdownChange(event: Event){
+    const target = event.target as HTMLSelectElement | null;
+    if (target) {
+      this.selectedValue = Number(target.value);
+      this.fetchNews(this.pageNumber, this.selectedValue);
+    }   
   }
 
   fetchNews(pageNumber:number,pageSize:number): void {

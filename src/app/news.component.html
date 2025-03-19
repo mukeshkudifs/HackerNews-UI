@@ -1,6 +1,13 @@
 <div class="search-container">
   <input type="text" #searchInput placeholder="Search news..." (keyup)="searchNews($event)" />
   <button (click)="resetSearch(searchInput)">Reset</button>
+
+  <select (change)="onDropdownChange($event)">
+    <option value="0">All Categories</option>
+    <option value="10">10</option>
+    <option value="20">20</option>
+    <option value="40">40</option>
+  </select>
 </div>
 
 <div *ngIf="isLoading">Loading...</div>

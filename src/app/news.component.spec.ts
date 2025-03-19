@@ -44,6 +44,18 @@ describe('NewsComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should update selectedValue and fetch news when dropdown value changes', () => {
+    spyOn(component, 'fetchNews');
+  
+    const event = {
+      target: { value: '20' } // Simulating a dropdown selection of 20
+    } as unknown as Event;
+  
+    component.onDropdownChange(event);
+  
+    expect(component.selectedValue).toBe(20);
+    expect(component.fetchNews).toHaveBeenCalledWith(component.pageNumber, 20);
+  });
 
   it('should fetch news on initialization', () => {
     spyOn(newsService, 'getNews').and.returnValue(of(mockResponse));
