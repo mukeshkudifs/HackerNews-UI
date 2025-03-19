@@ -2,7 +2,7 @@
   <input type="text" #searchInput placeholder="Search news..." (keyup)="searchNews($event)" />
   <button (click)="resetSearch(searchInput)">Reset</button>
 
-  <label for="select">Page Size :</label>
+
 
 
 </div>
@@ -20,6 +20,7 @@
 
 <div class="pagination-container">
   <pagination-controls *ngIf="totalStories>0" (pageChange)="pageChanged($event)"  ></pagination-controls>
+  <label for="select">Page Size :</label>
   <select (change)="onDropdownChange($event)">
     <option value="10">10</option>
     <option value="20">20</option>
