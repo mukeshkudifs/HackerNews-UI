@@ -13,3 +13,10 @@
     padding: 5px 10px;
     float: right;
   }
+
+  .pagination-container {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between;  */
+    gap: 10px;
+  }

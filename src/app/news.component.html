@@ -2,12 +2,9 @@
   <input type="text" #searchInput placeholder="Search news..." (keyup)="searchNews($event)" />
   <button (click)="resetSearch(searchInput)">Reset</button>
 
-  <select (change)="onDropdownChange($event)">
-    <option value="0">All Categories</option>
-    <option value="10">10</option>
-    <option value="20">20</option>
-    <option value="40">40</option>
-  </select>
+  <label for="select">Page Size :</label>
+
+
 </div>
 
 <div *ngIf="isLoading">Loading...</div>
@@ -20,4 +17,12 @@
     <a href="{{news.url}}" target="_blank">{{news.title}}</a>
     <hr>
 </div>
-  <pagination-controls *ngIf="totalStories>0" (pageChange)="pageChanged($event)" class="float-right"  ></pagination-controls>
+
+<div class="pagination-container">
+  <pagination-controls *ngIf="totalStories>0" (pageChange)="pageChanged($event)"  ></pagination-controls>
+  <select (change)="onDropdownChange($event)">
+    <option value="10">10</option>
+    <option value="20">20</option>
+    <option value="40">40</option>
+  </select>
+</div>
