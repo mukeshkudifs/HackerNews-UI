@@ -101,7 +101,7 @@ searchNews(event:any){
          map((event:any)=> event.target.value.trim().toLowerCase()),
          debounceTime(1000)       
     ).subscribe({
-      next: value => this.filterNews(value)
+      next: (value:any) => this.filterNews(value)
     })
 }
 
